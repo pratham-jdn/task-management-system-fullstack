@@ -42,7 +42,7 @@
    NODE_ENV=production
    PORT=10000
    MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/taskmanagement?retryWrites=true&w=majority
-   JWT_SECRET=your_super_secret_jwt_key_here_make_it_long_and_complex_panscience_2024
+   JWT_SECRET=pratham123
    JWT_EXPIRE=30d
    CLIENT_URL=https://your-frontend-url.onrender.com
    MAX_FILE_UPLOAD=5242880

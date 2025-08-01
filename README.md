@@ -74,7 +74,7 @@ A comprehensive MERN stack task management application with user authentication,
 NODE_ENV=production
 PORT=5000
 MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
+JWT_SECRET=pratham123
 JWT_EXPIRE=30d
 CLIENT_URL=https://your-frontend-url.com
 MAX_FILE_UPLOAD=5242880
