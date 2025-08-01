@@ -30,8 +30,14 @@
    - **Root Directory**: `backend`
    - **Build Command**: `npm install`
    - **Start Command**: `npm start`
+   - **Auto-Deploy**: Yes
 
-3. **Environment Variables**:
+3. **Important**: If you get a Dockerfile error:
+   - Make sure "Environment" is set to "Node" (not Docker)
+   - Verify "Root Directory" is set to `backend`
+   - Check that build and start commands are correct
+
+4. **Environment Variables**:
    ```
    NODE_ENV=production
    PORT=10000
@@ -42,7 +48,7 @@
    MAX_FILE_UPLOAD=5242880
    ```
 
-4. **Deploy**: Click "Create Web Service"
+5. **Deploy**: Click "Create Web Service"
 
 ### Step 3: Deploy Frontend on Render
 
