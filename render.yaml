@@ -1,0 +1,38 @@
+services:
+  # Backend API Service
+  - type: web
+    name: taskmanagement-backend
+    env: node
+    plan: free
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRE
+        value: 30d
+      - key: CLIENT_URL
+        sync: false
+      - key: MAX_FILE_UPLOAD
+        value: 5242880
+
+  # Frontend Static Site
+  - type: web
+    name: taskmanagement-frontend
+    env: static
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/build
+    envVars:
+      - key: REACT_APP_API_URL
+        sync: false
+      - key: REACT_APP_APP_NAME
+        value: Task Management System
+      - key: REACT_APP_VERSION
+        value: 1.0.0

@@ -59,8 +59,6 @@ export const createTask = createAsyncThunk(
   'tasks/createTask',
   async (taskData: CreateTaskData, { rejectWithValue }) => {
     try {
-      console.log('Redux createTask - received data:', taskData);
-      
       const formData = new FormData();
       
       // Append task data
@@ -70,27 +68,20 @@ export const createTask = createAsyncThunk(
             formData.append('attachments', file);
           });
         } else if (key === 'tags' && Array.isArray(value)) {
-          const tagsJson = JSON.stringify(value);
-          console.log('Appending tags as JSON:', tagsJson);
-          formData.append(key, tagsJson);
+          formData.append(key, JSON.stringify(value));
         } else if (value !== undefined && value !== null) {
-          console.log(`Appending ${key}:`, value);
           formData.append(key, value.toString());
         }
       });
 
-      console.log('Sending FormData to API...');
       const response = await api.post<ApiResponse<Task>>('/tasks', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
       
-      console.log('Task created successfully:', response.data);
       return response.data.data!;
     } catch (error: any) {
-      console.error('Redux createTask - error:', error);
-      console.error('Error response:', error.response?.data);
       return rejectWithValue(error.response?.data?.error || error.message || 'Failed to create task');
     }
   }

@@ -42,8 +42,6 @@ const CreateTask: React.FC = () => {
         attachments: selectedFile ? [selectedFile] : [],
       };
 
-      console.log('Submitting task data:', taskData);
-
       await dispatch(createTask(taskData)).unwrap();
       toast.success('Task created successfully!');
       navigate('/tasks');
