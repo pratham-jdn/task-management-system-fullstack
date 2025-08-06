@@ -4,10 +4,10 @@ A comprehensive MERN stack task management application with user authentication,
 
 ## 🌐 Live Demo
 
-- **Frontend Application**: [https://taskmanagement-frontend-ll6w.onrender.com](https://taskmanagement-frontend-ll6w.onrender.com)
-- **Backend API**: [https://taskmanagement-backend-uc9d.onrender.com](https://taskmanagement-backend-uc9d.onrender.com)
-- **API Documentation**: [https://taskmanagement-backend-uc9d.onrender.com/api-docs](https://taskmanagement-backend-uc9d.onrender.com/api-docs)
-- **Health Check**: [https://taskmanagement-backend-uc9d.onrender.com/api/health](https://taskmanagement-backend-uc9d.onrender.com/api/health)
+- **Frontend Application**: [https://taskmanagement-frontend-umt9.onrender.com](https://taskmanagement-frontend-umt9.onrender.com)
+- **Backend API**: [https://taskmanagement-backend-83z7.onrender.com](https://taskmanagement-backend-83z7.onrender.com)
+- **API Documentation**: [https://taskmanagement-backend-83z7.onrender.com/api-docs](https://taskmanagement-backend-83z7.onrender.com/api-docs)
+- **Health Check**: [https://taskmanagement-backend-83z7.onrender.com/api/health](https://taskmanagement-backend-83z7.onrender.com/api/health)
 
 ## 🚀 Features
 
@@ -63,8 +63,8 @@ A comprehensive MERN stack task management application with user authentication,
 This application is deployed on Render using the `render.yaml` blueprint for automated deployment.
 
 ### Live URLs
-- **Frontend**: [https://taskmanagement-frontend-ll6w.onrender.com](https://taskmanagement-frontend-ll6w.onrender.com)
-- **Backend**: [https://taskmanagement-backend-uc9d.onrender.com](https://taskmanagement-backend-uc9d.onrender.com)
+- **Frontend**: [https://taskmanagement-frontend-umt9.onrender.com](https://taskmanagement-frontend-umt9.onrender.com)
+- **Backend**: [https://taskmanagement-backend-83z7.onrender.com](https://taskmanagement-backend-83z7.onrender.com)
 
 ### Deploy Your Own Instance
 
@@ -102,13 +102,13 @@ PORT=10000
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=pratham123
 JWT_EXPIRE=30d
-CLIENT_URL=https://taskmanagement-frontend-ll6w.onrender.com
+CLIENT_URL=https://taskmanagement-frontend-umt9.onrender.com
 MAX_FILE_UPLOAD=5242880
 ```
 
 ### Frontend (.env)
 ```
-REACT_APP_API_URL=https://taskmanagement-backend-uc9d.onrender.com/api
+REACT_APP_API_URL=https://taskmanagement-backend-83z7.onrender.com/api
 REACT_APP_APP_NAME=Task Management System
 REACT_APP_VERSION=1.0.0
 ```
@@ -123,7 +123,7 @@ npm run seed:users
 
 ## 📚 API Documentation
 
-Visit the live API documentation at: [https://taskmanagement-backend-uc9d.onrender.com/api-docs](https://taskmanagement-backend-uc9d.onrender.com/api-docs)
+Visit the live API documentation at: [https://taskmanagement-backend-83z7.onrender.com/api-docs](https://taskmanagement-backend-83z7.onrender.com/api-docs)
 
 For local development, visit `/api-docs` on your backend URL to view the Swagger documentation.
 
