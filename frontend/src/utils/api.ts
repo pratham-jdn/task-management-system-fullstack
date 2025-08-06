@@ -1,10 +1,23 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 
+// Get API URL
+const API_URL = process.env.REACT_APP_API_URL || 'https://taskmanagement-backend-83z7.onrender.com/api';
+
+// Debug logging
+console.log('API Configuration:', {
+  REACT_APP_API_URL: process.env.REACT_APP_API_URL,
+  API_URL,
+  NODE_ENV: process.env.NODE_ENV
+});
+
 // Create axios instance
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'https://taskmanagement-backend-83z7.onrender.com/api',
+  baseURL: API_URL,
   timeout: 10000,
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
 // Request interceptor to add auth token
@@ -14,6 +27,15 @@ api.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
+    
+    // Debug logging
+    console.log('Making API request:', {
+      method: config.method?.toUpperCase(),
+      url: config.url,
+      baseURL: config.baseURL,
+      fullURL: `${config.baseURL}${config.url}`
+    });
+    
     return config;
   },
   (error) => {
