@@ -31,7 +31,7 @@ const corsOptions = {
       process.env.CLIENT_URL,
       'http://localhost:3000',
       'http://localhost:3001',
-      'https://taskmanagement-frontend-ll6w.onrender.com'
+      'https://taskmanagement-frontend-umt9.onrender.com'
     ].filter(Boolean);
     
     if (allowedOrigins.includes(origin)) {
