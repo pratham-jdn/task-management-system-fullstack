@@ -20,10 +20,33 @@ const app = express();
 
 // Security middleware
 app.use(helmet());
-app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
-  credentials: true
-}));
+
+// CORS configuration
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    const allowedOrigins = [
+      process.env.CLIENT_URL,
+      'http://localhost:3000',
+      'http://localhost:3001',
+      'https://taskmanagement-frontend-ll6w.onrender.com'
+    ].filter(Boolean);
+    
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      console.log('CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+};
+
+app.use(cors(corsOptions));
 
 // Rate limiting
 const limiter = rateLimit({
@@ -60,7 +83,7 @@ const swaggerOptions = {
     servers: [
       {
         url: process.env.NODE_ENV === 'production' 
-          ? 'https://your-api-url.com/api' 
+          ? 'https://taskmanagement-backend-uc9d.onrender.com/api' 
           : `http://localhost:${process.env.PORT || 5000}/api`,
       },
     ],
