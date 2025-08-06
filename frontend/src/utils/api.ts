@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 // Create axios instance
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || '/api',
+  baseURL: process.env.REACT_APP_API_URL || 'https://taskmanagement-backend-83z7.onrender.com/api',
   timeout: 10000,
 });
 
