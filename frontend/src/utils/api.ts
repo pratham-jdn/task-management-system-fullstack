@@ -1,8 +1,23 @@
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { toast } from 'react-toastify';
 
-// Get API URL
-const API_URL = process.env.REACT_APP_API_URL || 'https://taskmanagement-backend-83z7.onrender.com/api';
+// Get API URL from multiple sources
+const getApiUrl = () => {
+  // Try runtime config first
+  if (typeof window !== 'undefined' && (window as any).APP_CONFIG?.API_URL) {
+    return (window as any).APP_CONFIG.API_URL;
+  }
+  
+  // Fall back to environment variable
+  if (process.env.REACT_APP_API_URL) {
+    return process.env.REACT_APP_API_URL;
+  }
+  
+  // Final fallback
+  return 'https://taskmanagement-backend-83z7.onrender.com/api';
+};
+
+const API_URL = getApiUrl();
 
 // Debug logging
 console.log('API Configuration:', {
