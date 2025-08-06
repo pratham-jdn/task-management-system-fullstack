@@ -23,8 +23,9 @@ services:
         value: 5242880
 
   # Frontend Static Site
-  - type: static
+  - type: web
     name: taskmanagement-frontend
+    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: build
