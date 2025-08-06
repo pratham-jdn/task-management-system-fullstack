@@ -3,7 +3,6 @@ services:
   - type: web
     name: taskmanagement-backend
     env: node
-    plan: free
     rootDir: backend
     buildCommand: npm install
     startCommand: npm start
@@ -24,10 +23,8 @@ services:
         value: 5242880
 
   # Frontend Static Site
-  - type: web
+  - type: static
     name: taskmanagement-frontend
-    env: static
-    plan: free
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: build
