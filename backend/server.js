@@ -83,7 +83,7 @@ const swaggerOptions = {
     servers: [
       {
         url: process.env.NODE_ENV === 'production' 
-          ? 'https://taskmanagement-backend-uc9d.onrender.com/api' 
+          ? 'https://taskmanagement-backend-83z7.onrender.com/api' 
           : `http://localhost:${process.env.PORT || 5000}/api`,
       },
     ],

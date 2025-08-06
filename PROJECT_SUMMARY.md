@@ -130,7 +130,7 @@ npm start
 ## 🔐 Default Credentials
 
 - **Email**: admin@taskmanagement.com
-- **Password**: admin123
+- **Password**: Admin123!
 
 ## 🧪 Testing
 

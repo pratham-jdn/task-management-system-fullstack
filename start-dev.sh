@@ -59,7 +59,7 @@ echo "📚 API Documentation: http://localhost:5001/api-docs"
 echo ""
 echo "Default admin credentials:"
 echo "Email: admin@taskmanagement.com"
-echo "Password: admin123"
+echo "Password: Admin123!"
 echo ""
 echo "Press Ctrl+C to stop both servers"
 

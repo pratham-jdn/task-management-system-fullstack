@@ -109,7 +109,7 @@ cd frontend && npm install && npm start
 - **Frontend**: http://localhost:3000
 - **Backend API**: http://localhost:5000
 - **API Documentation**: http://localhost:5000/api-docs
-- **Default Admin**: admin@taskmanagement.com / admin123
+- **Default Admin**: admin@taskmanagement.com / Admin123!
 
 ## 📁 Project Structure (50+ Files Created)
 

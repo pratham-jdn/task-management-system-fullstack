@@ -195,7 +195,7 @@ echo ""
 
 print_info "Default admin credentials:"
 echo "   Email: admin@taskmanagement.com"
-echo "   Password: admin123"
+echo "   Password: Admin123!"
 
 echo ""
 echo "✅ Setup verification complete!"

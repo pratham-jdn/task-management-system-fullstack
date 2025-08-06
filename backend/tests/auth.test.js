@@ -23,8 +23,8 @@ describe('Authentication Endpoints', () => {
     it('should register a new user', async () => {
       const userData = {
         name: 'Test User',
-        email: 'test@example.com',
-        password: 'Password123'
+        email: 'admin@taskmanagement.com',
+        password: 'Admin123!'
       };
 
       const response = await request(app)
@@ -42,7 +42,7 @@ describe('Authentication Endpoints', () => {
       const userData = {
         name: 'Test User',
         email: 'invalid-email',
-        password: 'Password123'
+        password: 'Admin123!'
       };
 
       const response = await request(app)
@@ -56,7 +56,7 @@ describe('Authentication Endpoints', () => {
     it('should not register user with weak password', async () => {
       const userData = {
         name: 'Test User',
-        email: 'test@example.com',
+        email: 'admin@taskmanagement.com',
         password: '123'
       };
 
@@ -71,8 +71,8 @@ describe('Authentication Endpoints', () => {
     it('should not register user with duplicate email', async () => {
       const userData = {
         name: 'Test User',
-        email: 'test@example.com',
-        password: 'Password123'
+        email: 'admin@taskmanagement.com',
+        password: 'Admin123!'
       };
 
       // Register first user
@@ -97,16 +97,16 @@ describe('Authentication Endpoints', () => {
       // Create a test user
       const user = new User({
         name: 'Test User',
-        email: 'test@example.com',
-        password: 'Password123'
+        email: 'admin@taskmanagement.com',
+        password: 'Admin123!'
       });
       await user.save();
     });
 
     it('should login with valid credentials', async () => {
       const loginData = {
-        email: 'test@example.com',
-        password: 'Password123'
+        email: 'admin@taskmanagement.com',
+        password: 'Admin123!'
       };
 
       const response = await request(app)
@@ -122,7 +122,7 @@ describe('Authentication Endpoints', () => {
     it('should not login with invalid email', async () => {
       const loginData = {
         email: 'wrong@example.com',
-        password: 'Password123'
+        password: 'Admin123!'
       };
 
       const response = await request(app)
@@ -136,7 +136,7 @@ describe('Authentication Endpoints', () => {
 
     it('should not login with invalid password', async () => {
       const loginData = {
-        email: 'test@example.com',
+        email: 'admin@taskmanagement.com',
         password: 'wrongpassword'
       };
 
@@ -152,13 +152,13 @@ describe('Authentication Endpoints', () => {
     it('should not login inactive user', async () => {
       // Deactivate user
       await User.findOneAndUpdate(
-        { email: 'test@example.com' },
+        { email: 'admin@taskmanagement.com' },
         { isActive: false }
       );
 
       const loginData = {
-        email: 'test@example.com',
-        password: 'Password123'
+        email: 'admin@taskmanagement.com',
+        password: 'Admin123!'
       };
 
       const response = await request(app)
@@ -178,8 +178,8 @@ describe('Authentication Endpoints', () => {
       // Create and login user
       const userData = {
         name: 'Test User',
-        email: 'test@example.com',
-        password: 'Password123'
+        email: 'admin@taskmanagement.com',
+        password: 'Admin123!'
       };
 
       const response = await request(app)
@@ -196,7 +196,7 @@ describe('Authentication Endpoints', () => {
         .expect(200);
 
       expect(response.body.success).toBe(true);
-      expect(response.body.data.user.email).toBe('test@example.com');
+      expect(response.body.data.user.email).toBe('admin@taskmanagement.com');
     });
 
     it('should not get profile without token', async () => {
@@ -223,8 +223,8 @@ describe('Authentication Endpoints', () => {
     beforeEach(async () => {
       const userData = {
         name: 'Test User',
-        email: 'test@example.com',
-        password: 'Password123'
+        email: 'admin@taskmanagement.com',
+        password: 'Admin123!'
       };
 
       const response = await request(app)
@@ -256,7 +256,7 @@ describe('Authentication Endpoints', () => {
       await User.create({
         name: 'Another User',
         email: 'another@example.com',
-        password: 'Password123'
+        password: 'Admin123!'
       });
 
       const updateData = {
@@ -280,8 +280,8 @@ describe('Authentication Endpoints', () => {
     beforeEach(async () => {
       const userData = {
         name: 'Test User',
-        email: 'test@example.com',
-        password: 'Password123'
+        email: 'admin@taskmanagement.com',
+        password: 'Admin123!'
       };
 
       const response = await request(app)
@@ -293,7 +293,7 @@ describe('Authentication Endpoints', () => {
 
     it('should change password', async () => {
       const passwordData = {
-        currentPassword: 'Password123',
+        currentPassword: 'Admin123!',
         newPassword: 'NewPassword123'
       };
 
@@ -309,7 +309,7 @@ describe('Authentication Endpoints', () => {
       const loginResponse = await request(app)
         .post('/api/auth/login')
         .send({
-          email: 'test@example.com',
+          email: 'admin@taskmanagement.com',
           password: 'NewPassword123'
         })
         .expect(200);
@@ -335,7 +335,7 @@ describe('Authentication Endpoints', () => {
 
     it('should not change to weak password', async () => {
       const passwordData = {
-        currentPassword: 'Password123',
+        currentPassword: 'Admin123!',
         newPassword: '123'
       };
 
