@@ -2,6 +2,13 @@
 
 A comprehensive MERN stack task management application with user authentication, task assignment, file uploads, and real-time updates.
 
+## 🌐 Live Demo
+
+- **Frontend Application**: [https://taskmanagement-frontend-ll6w.onrender.com](https://taskmanagement-frontend-ll6w.onrender.com)
+- **Backend API**: [https://taskmanagement-backend-uc9d.onrender.com](https://taskmanagement-backend-uc9d.onrender.com)
+- **API Documentation**: [https://taskmanagement-backend-uc9d.onrender.com/api-docs](https://taskmanagement-backend-uc9d.onrender.com/api-docs)
+- **Health Check**: [https://taskmanagement-backend-uc9d.onrender.com/api/health](https://taskmanagement-backend-uc9d.onrender.com/api/health)
+
 ## 🚀 Features
 
 - **User Authentication**: JWT-based authentication with role-based access control
@@ -53,36 +60,55 @@ A comprehensive MERN stack task management application with user authentication,
 
 ## 🚀 Deployment
 
-### Backend (Render)
+This application is deployed on Render using the `render.yaml` blueprint for automated deployment.
+
+### Live URLs
+- **Frontend**: [https://taskmanagement-frontend-ll6w.onrender.com](https://taskmanagement-frontend-ll6w.onrender.com)
+- **Backend**: [https://taskmanagement-backend-uc9d.onrender.com](https://taskmanagement-backend-uc9d.onrender.com)
+
+### Deploy Your Own Instance
+
+#### Option 1: One-Click Deploy (Recommended)
+1. Fork this repository
+2. Go to [Render Dashboard](https://dashboard.render.com/)
+3. Click "New" → "Blueprint"
+4. Connect your GitHub repository
+5. Render will automatically deploy both services using `render.yaml`
+
+#### Option 2: Manual Deployment
+
+**Backend (Render Web Service)**
 1. Create a new Web Service on Render
 2. Connect your GitHub repository
-3. Set build command: `npm install`
-4. Set start command: `npm start`
-5. Add environment variables (see .env.example)
+3. Set root directory: `backend`
+4. Set build command: `npm install`
+5. Set start command: `npm start`
+6. Add environment variables (see .env.example)
 
-### Frontend (Render/Netlify/Vercel)
-1. Create a new Static Site
+**Frontend (Render Static Site)**
+1. Create a new Static Site on Render
 2. Connect your GitHub repository
-3. Set build command: `npm run build`
-4. Set publish directory: `build`
-5. Add environment variables (see .env.example)
+3. Set root directory: `frontend`
+4. Set build command: `npm install && npm run build`
+5. Set publish directory: `build`
+6. Add environment variables (see .env.example)
 
 ## 🔧 Environment Variables
 
 ### Backend (.env)
 ```
 NODE_ENV=production
-PORT=5000
+PORT=10000
 MONGODB_URI=your_mongodb_connection_string
 JWT_SECRET=pratham123
 JWT_EXPIRE=30d
-CLIENT_URL=https://your-frontend-url.com
+CLIENT_URL=https://taskmanagement-frontend-ll6w.onrender.com
 MAX_FILE_UPLOAD=5242880
 ```
 
 ### Frontend (.env)
 ```
-REACT_APP_API_URL=https://your-backend-url.com/api
+REACT_APP_API_URL=https://taskmanagement-backend-uc9d.onrender.com/api
 REACT_APP_APP_NAME=Task Management System
 REACT_APP_VERSION=1.0.0
 ```
@@ -97,7 +123,9 @@ npm run seed:users
 
 ## 📚 API Documentation
 
-Once deployed, visit `/api-docs` on your backend URL to view the Swagger documentation.
+Visit the live API documentation at: [https://taskmanagement-backend-uc9d.onrender.com/api-docs](https://taskmanagement-backend-uc9d.onrender.com/api-docs)
+
+For local development, visit `/api-docs` on your backend URL to view the Swagger documentation.
 
 ## 🤝 Contributing
 
