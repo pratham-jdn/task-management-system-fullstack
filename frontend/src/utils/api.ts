@@ -26,10 +26,10 @@ console.log('API Configuration:', {
   NODE_ENV: process.env.NODE_ENV
 });
 
-// Create axios instance
+// Create axios instance with better timeout for cold starts
 const api = axios.create({
   baseURL: API_URL,
-  timeout: 10000,
+  timeout: 30000, // Increased timeout for Render cold starts
   headers: {
     'Content-Type': 'application/json',
   },
@@ -58,12 +58,31 @@ api.interceptors.request.use(
   }
 );
 
-// Response interceptor to handle errors
+// Response interceptor to handle errors with retry logic
 api.interceptors.response.use(
   (response: AxiosResponse) => {
     return response;
   },
-  (error: AxiosError) => {
+  async (error: AxiosError) => {
+    const originalRequest = error.config as any;
+    
+    // Retry logic for network errors or 5xx errors (likely cold start issues)
+    if (
+      (!error.response || error.response.status >= 500) && 
+      !originalRequest._retry && 
+      originalRequest._retryCount < 2
+    ) {
+      originalRequest._retry = true;
+      originalRequest._retryCount = (originalRequest._retryCount || 0) + 1;
+      
+      console.log(`🔄 Retrying request (attempt ${originalRequest._retryCount}/2)...`);
+      
+      // Wait a bit before retrying (for cold start)
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      return api(originalRequest);
+    }
+    
     const message = (error.response?.data as any)?.error || error.message || 'An error occurred';
     
     // Handle specific error cases
@@ -76,9 +95,11 @@ api.interceptors.response.use(
     } else if (error.response?.status === 403) {
       toast.error('You do not have permission to perform this action.');
     } else if (error.response?.status === 404) {
-      toast.error('Resource not found.');
+      toast.error('Service not found. The server may be starting up, please wait a moment and try again.');
     } else if (error.response && error.response.status >= 500) {
       toast.error('Server error. Please try again later.');
+    } else if (!error.response) {
+      toast.error('Network error. Please check your connection and try again.');
     } else {
       toast.error(message);
     }

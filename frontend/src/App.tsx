@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import { store } from './store';
 import { useAppDispatch, useAppSelector } from './hooks/redux';
 import { loadUser } from './store/slices/authSlice';
+import { warmupServices } from './utils/warmup';
 
 // Components
 import Layout from './components/Layout/Layout';
@@ -34,6 +35,9 @@ const AppContent: React.FC = () => {
   const { isAuthenticated, loading, token } = useAppSelector((state) => state.auth);
 
   useEffect(() => {
+    // Warmup services on app load
+    warmupServices();
+    
     if (token && !isAuthenticated) {
       dispatch(loadUser());
     }
