@@ -125,6 +125,10 @@ const Register: React.FC = () => {
                       value: 6,
                       message: 'Password must be at least 6 characters',
                     },
+                    pattern: {
+                      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,}$/,
+                      message: 'Password must include uppercase, lowercase, and a number',
+                    },
                   })}
                   type={showPassword ? 'text' : 'password'}
                   className="form-input pr-10"

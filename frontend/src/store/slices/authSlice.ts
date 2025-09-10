@@ -41,6 +41,10 @@ export const register = createAsyncThunk(
       
       return { token, user };
     } catch (error: any) {
+      const details = error.response?.data?.details;
+      if (Array.isArray(details) && details.length) {
+        return rejectWithValue(details.map((d: any) => d.msg).join(', '));
+      }
       return rejectWithValue(error.response?.data?.error || 'Registration failed');
     }
   }
